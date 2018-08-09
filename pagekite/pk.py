@@ -3066,6 +3066,7 @@ class PageKite(object):
     def sping(server):
       (host, port) = server.split(':')
       ipaddrs = self.CachedGetHostIpAddrs(host)
+      ipaddrs = filter(lambda x : x.find(':') == -1, ipaddrs)
       if ipaddrs:
         ptime, uuid = self.Ping(ipaddrs[0], int(port))
         server = '%s:%s' % (ipaddrs[0], port)
